@@ -2,18 +2,77 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var selectedChild = 0
-    @State private var selectedTab: Tab = .home
+    @State private var showCalendarView = false
+    @State private var showScheduleAppointment = false
+    @State private var showAddChild = false
+    @State private var showAddTrackingItem = false
     
+    // Sample data
     let children = [
         Child(name: "Emma", age: "5y", initial: "E", color: .blue),
         Child(name: "Liam", age: "3y", initial: "L", color: .gray),
         Child(name: "Sophia", age: "7y", initial: "S", color: .gray)
     ]
     
+    // Sample events
+    let upcomingEvents = [
+        ScheduleEvent(
+            id: UUID(),
+            time: "2:00 PM",
+            title: "MMR Vaccine Overdue",
+            day: "Today",
+            type: .vaccination,
+            isMissed: true
+        ),
+        ScheduleEvent(
+            id: UUID(),
+            time: "8:00 AM",
+            title: "Amoxicillin 250mg",
+            day: "Today",
+            type: .medication,
+            isMissed: false
+        ),
+        ScheduleEvent(
+            id: UUID(),
+            time: "1:30 PM",
+            title: "Pediatrician Appointment",
+            day: "Tomorrow",
+            type: .checkup,
+            isMissed: false
+        )
+    ]
+    
+    var missedEvents: [ScheduleEvent] {
+        return upcomingEvents.filter { $0.isMissed }
+    }
+    
+    var futureEvents: [ScheduleEvent] {
+        return upcomingEvents.filter { !$0.isMissed }
+    }
+    
+    var nextAppointmentIn: String {
+        // In a real app, you would calculate this from actual appointments
+        return "3 days"
+    }
+    
+    var medicationsDueToday: Int {
+        // In a real app, you would count actual medications due today
+        return 2
+    }
+    
+    var unreadUpdates: Int {
+        // In a real app, you would count actual unread updates
+        return 3
+    }
+    
+    var selectedChildName: String {
+        return children[selectedChild].name
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             // Header
-            Text("Home Emma")
+            Text("Home \(selectedChildName)")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding()
@@ -38,6 +97,8 @@ struct HomeView: View {
                                 Image(systemName: "chevron.left")
                                     .foregroundColor(.gray)
                             }
+                            .disabled(selectedChild == 0)
+                            .opacity(selectedChild == 0 ? 0.5 : 1)
                             
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 12) {
@@ -47,7 +108,9 @@ struct HomeView: View {
                                             isSelected: selectedChild == index
                                         )
                                         .onTapGesture {
-                                            selectedChild = index
+                                            withAnimation {
+                                                selectedChild = index
+                                            }
                                         }
                                     }
                                 }
@@ -63,9 +126,11 @@ struct HomeView: View {
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.gray)
                             }
+                            .disabled(selectedChild == children.count - 1)
+                            .opacity(selectedChild == children.count - 1 ? 0.5 : 1)
                             
                             Button(action: {
-                                // Add child
+                                showAddChild = true
                             }) {
                                 Image(systemName: "plus")
                                     .foregroundColor(.blue)
@@ -91,21 +156,24 @@ struct HomeView: View {
                             OverviewCard(
                                 icon: "calendar",
                                 title: "Next Checkup",
-                                value: "3 days",
+                                value: nextAppointmentIn,
                                 color: .blue
                             )
+                            .onTapGesture {
+                                showCalendarView = true
+                            }
                             
                             OverviewCard(
                                 icon: "pills",
                                 title: "Medications",
-                                value: "2 due today",
+                                value: "\(medicationsDueToday) due today",
                                 color: .orange
                             )
                             
                             OverviewCard(
                                 icon: "bell",
                                 title: "Updates",
-                                value: "3 new",
+                                value: "\(unreadUpdates) new",
                                 color: .red
                             )
                         }
@@ -124,7 +192,7 @@ struct HomeView: View {
                             Spacer()
                             
                             Button("View Calendar") {
-                                // Action to view full calendar
+                                showCalendarView = true
                             }
                             .foregroundColor(.blue)
                         }
@@ -138,14 +206,35 @@ struct HomeView: View {
                                     isSelected: day == "Tue",
                                     events: eventsForDay(day)
                                 )
+                                .onTapGesture {
+                                    showCalendarView = true
+                                }
                             }
                         }
                         .padding(.horizontal)
+                        
+                        // Schedule Appointment button
+                        Button(action: {
+                            showScheduleAppointment = true
+                        }) {
+                            HStack {
+                                Image(systemName: "calendar.badge.plus")
+                                    .foregroundColor(.white)
+                                Text("Schedule Appointment")
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, 8)
                     }
                     .padding(.vertical)
                     .background(Color.white)
                     
-                    // Today's Schedule
                     VStack(alignment: .leading, spacing: 15) {
                         HStack {
                             Text("Today's Schedule")
@@ -155,56 +244,82 @@ struct HomeView: View {
                             Spacer()
                             
                             Button(action: {
-                                // Add new schedule item
+                                // Show tracking form instead of appointment scheduling
+                                showAddTrackingItem = true
                             }) {
-                                Image(systemName: "plus.circle")
+                                Image(systemName: "plus.circle.fill")
                                     .foregroundColor(.blue)
                                     .font(.title2)
                             }
                         }
                         .padding(.horizontal)
                         
-                        Text("Missed")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal)
-                        
-                        // Missed event
-                        ScheduleItemView(
-                            time: "2:00 PM",
-                            title: "MMR Vaccine Overdue",
-                            isAlert: true,
-                            color: .red
-                        )
-                        .padding(.horizontal)
+                        if !missedEvents.isEmpty {
+                            Text("Missed")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal)
+                            
+                            ForEach(missedEvents) { event in
+                                ScheduleItemView(
+                                    time: event.time,
+                                    title: event.title,
+                                    isAlert: true,
+                                    color: event.type.color,
+                                    icon: event.type.icon
+                                )
+                                .padding(.horizontal)
+                            }
+                        }
                         
                         Text("Upcoming")
                             .font(.headline)
                             .foregroundColor(.secondary)
                             .padding(.horizontal)
                         
-                        // Upcoming event
-                        ScheduleItemView(
-                            time: "8:00 AM",
-                            title: "Amoxicillin 250mg",
-                            isAlert: false,
-                            color: .orange,
-                            icon: "pills"
-                        )
-                        .padding(.horizontal)
+                        if futureEvents.isEmpty {
+                            Text("No upcoming events today")
+                                .foregroundColor(.gray)
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                        } else {
+                            ForEach(futureEvents) { event in
+                                ScheduleItemView(
+                                    time: event.time,
+                                    title: event.title,
+                                    isAlert: false,
+                                    color: event.type.color,
+                                    icon: event.type.icon
+                                )
+                                .padding(.horizontal)
+                            }
+                        }
                     }
                     .padding(.vertical)
                     .background(Color.white)
                 }
                 .padding(.bottom, 80) // Add padding to account for tab bar
             }
-            
-            // Tab bar at bottom
-            CustomTabBar(selectedTab: $selectedTab)
-                .background(Color.white)
         }
         .background(Color(UIColor.systemGray6))
         .edgesIgnoringSafeArea(.bottom)
+        .fullScreenCover(isPresented: $showCalendarView) {
+            CalendarView()
+        }
+        .sheet(isPresented: $showScheduleAppointment) {
+            SelectAppointmentTypeView()
+        }
+        
+        .sheet(isPresented: $showAddTrackingItem) {
+            AddTrackingItemView()
+        }
+        
+        .sheet(isPresented: $showAddChild) {
+            // This would be your Add Child view
+            Text("Add Child Form")
+                .font(.title)
+                .padding()
+        }
     }
     
     // Helper functions for WeekDayView
@@ -231,4 +346,49 @@ struct HomeView: View {
         default: return []
         }
     }
+}
+
+// Event type for schedule items
+enum EventType: Identifiable {
+    case medication
+    case checkup
+    case vaccination
+    case other
+    
+    var id: String {
+        switch self {
+        case .medication: return "medication"
+        case .checkup: return "checkup"
+        case .vaccination: return "vaccination"
+        case .other: return "other"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .medication: return .orange
+        case .checkup: return .blue
+        case .vaccination: return .red
+        case .other: return .gray
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .medication: return "pills"
+        case .checkup: return "stethoscope"
+        case .vaccination: return "syringe"
+        case .other: return "calendar"
+        }
+    }
+}
+
+// Schedule event model
+struct ScheduleEvent: Identifiable {
+    let id: UUID
+    let time: String
+    let title: String
+    let day: String
+    let type: EventType
+    let isMissed: Bool
 }
