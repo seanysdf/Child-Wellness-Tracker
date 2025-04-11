@@ -11,6 +11,19 @@
 		4ED5798B2DA9BB7D008AF791 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5798A2DA9BB7D008AF791 /* ContentView.swift */; };
 		4ED5798D2DA9BB7F008AF791 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED5798C2DA9BB7F008AF791 /* Assets.xcassets */; };
 		4ED579902DA9BB7F008AF791 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED5798F2DA9BB7F008AF791 /* Preview Assets.xcassets */; };
+		4ED579972DA9BC0D008AF791 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579962DA9BC0D008AF791 /* HomeView.swift */; };
+		4ED5799A2DA9BC86008AF791 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579992DA9BC86008AF791 /* Child.swift */; };
+		4ED579A12DA9BCBA008AF791 /* ChildButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579A02DA9BCBA008AF791 /* ChildButton.swift */; };
+		4ED579A32DA9BCC4008AF791 /* OverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579A22DA9BCC4008AF791 /* OverviewCard.swift */; };
+		4ED579A52DA9BCCD008AF791 /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579A42DA9BCCD008AF791 /* WeekDayView.swift */; };
+		4ED579A72DA9BCD5008AF791 /* ScheduleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579A62DA9BCD5008AF791 /* ScheduleItemView.swift */; };
+		4ED579A92DA9BCE8008AF791 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579A82DA9BCE8008AF791 /* CustomTabBar.swift */; };
+		4ED579AB2DA9BD23008AF791 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579AA2DA9BD23008AF791 /* DataManager.swift */; };
+		4ED579AD2DA9BDCA008AF791 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579AC2DA9BDCA008AF791 /* Tab.swift */; };
+		4ED579B12DA9BEBC008AF791 /* EventDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579B02DA9BEBC008AF791 /* EventDot.swift */; };
+		4ED579B32DA9BF68008AF791 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579B22DA9BF68008AF791 /* Medication.swift */; };
+		4ED579B52DA9BF81008AF791 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579B42DA9BF81008AF791 /* Appointment.swift */; };
+		4ED579B72DA9BF90008AF791 /* Vaccination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED579B62DA9BF90008AF791 /* Vaccination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +32,19 @@
 		4ED5798A2DA9BB7D008AF791 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4ED5798C2DA9BB7F008AF791 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED5798F2DA9BB7F008AF791 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4ED579962DA9BC0D008AF791 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4ED579992DA9BC86008AF791 /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
+		4ED579A02DA9BCBA008AF791 /* ChildButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildButton.swift; sourceTree = "<group>"; };
+		4ED579A22DA9BCC4008AF791 /* OverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewCard.swift; sourceTree = "<group>"; };
+		4ED579A42DA9BCCD008AF791 /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
+		4ED579A62DA9BCD5008AF791 /* ScheduleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemView.swift; sourceTree = "<group>"; };
+		4ED579A82DA9BCE8008AF791 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		4ED579AA2DA9BD23008AF791 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		4ED579AC2DA9BDCA008AF791 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		4ED579B02DA9BEBC008AF791 /* EventDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDot.swift; sourceTree = "<group>"; };
+		4ED579B22DA9BF68008AF791 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		4ED579B42DA9BF81008AF791 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		4ED579B62DA9BF90008AF791 /* Vaccination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaccination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +77,14 @@
 		4ED579872DA9BB7D008AF791 /* Child Wellness Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				4ED5799F2DA9BCB0008AF791 /* Components */,
+				4ED579982DA9BC79008AF791 /* Models */,
+				4ED579962DA9BC0D008AF791 /* HomeView.swift */,
 				4ED579882DA9BB7D008AF791 /* Child_Wellness_TrackerApp.swift */,
 				4ED5798A2DA9BB7D008AF791 /* ContentView.swift */,
 				4ED5798C2DA9BB7F008AF791 /* Assets.xcassets */,
 				4ED5798E2DA9BB7F008AF791 /* Preview Content */,
+				4ED579AA2DA9BD23008AF791 /* DataManager.swift */,
 			);
 			path = "Child Wellness Tracker";
 			sourceTree = "<group>";
@@ -65,6 +95,31 @@
 				4ED5798F2DA9BB7F008AF791 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4ED579982DA9BC79008AF791 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4ED579992DA9BC86008AF791 /* Child.swift */,
+				4ED579B02DA9BEBC008AF791 /* EventDot.swift */,
+				4ED579B22DA9BF68008AF791 /* Medication.swift */,
+				4ED579B42DA9BF81008AF791 /* Appointment.swift */,
+				4ED579B62DA9BF90008AF791 /* Vaccination.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4ED5799F2DA9BCB0008AF791 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4ED579A02DA9BCBA008AF791 /* ChildButton.swift */,
+				4ED579A22DA9BCC4008AF791 /* OverviewCard.swift */,
+				4ED579A42DA9BCCD008AF791 /* WeekDayView.swift */,
+				4ED579A62DA9BCD5008AF791 /* ScheduleItemView.swift */,
+				4ED579A82DA9BCE8008AF791 /* CustomTabBar.swift */,
+				4ED579AC2DA9BDCA008AF791 /* Tab.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +192,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ED579A72DA9BCD5008AF791 /* ScheduleItemView.swift in Sources */,
+				4ED579B72DA9BF90008AF791 /* Vaccination.swift in Sources */,
+				4ED579A32DA9BCC4008AF791 /* OverviewCard.swift in Sources */,
+				4ED579A52DA9BCCD008AF791 /* WeekDayView.swift in Sources */,
+				4ED579B32DA9BF68008AF791 /* Medication.swift in Sources */,
+				4ED579AD2DA9BDCA008AF791 /* Tab.swift in Sources */,
+				4ED579B52DA9BF81008AF791 /* Appointment.swift in Sources */,
+				4ED579A12DA9BCBA008AF791 /* ChildButton.swift in Sources */,
+				4ED579972DA9BC0D008AF791 /* HomeView.swift in Sources */,
+				4ED579B12DA9BEBC008AF791 /* EventDot.swift in Sources */,
 				4ED5798B2DA9BB7D008AF791 /* ContentView.swift in Sources */,
+				4ED579A92DA9BCE8008AF791 /* CustomTabBar.swift in Sources */,
+				4ED5799A2DA9BC86008AF791 /* Child.swift in Sources */,
+				4ED579AB2DA9BD23008AF791 /* DataManager.swift in Sources */,
 				4ED579892DA9BB7D008AF791 /* Child_Wellness_TrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
